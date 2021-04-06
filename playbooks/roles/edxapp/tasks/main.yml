@@ -153,6 +153,19 @@
     - install
     - install:base
 
+- name: add deadsnakes repo
+  apt_repository:
+      repo: ppa:deadsnakes/ppa
+
+- name: install python3.5
+  apt:
+    pkg:
+      - python3.5-dev
+      - python3.5-distutils
+  tags:
+    - install
+    - install:system-requirements
+
 - name: create log directories for service variants
   file:
     path: "{{ edxapp_log_dir }}/{{ item }}"

@@ -4,7 +4,7 @@
 
 - name: Bootstrap instance(s)
   hosts: all
-  gather_facts: no
+  gather_facts: True
   become: True
   roles:
     - python

@@ -41,8 +41,8 @@
     - install
     - install:system-requirements
 
-- name: build virtualenv with python3
-  command: "virtualenv --python=python3 {{ edx_django_service_with_rendered_config_venv_dir }}"
+- name: build virtualenv with python3.5
+  command: "virtualenv --python=python3.5 {{ edx_django_service_with_rendered_config_venv_dir }}"
   args:
     creates: "{{ edx_django_service_with_rendered_config_venv_dir }}/bin/pip"
   become_user: "{{ edx_django_service_with_rendered_config_user }}"

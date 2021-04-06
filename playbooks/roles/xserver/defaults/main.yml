@@ -55,7 +55,7 @@ xserver_gunicorn_port: 8050
 xserver_gunicorn_host: 'localhost'
 xserver_gunicorn_workers: "{{ ansible_processor|length }}"
 
-xserver_debian_pkgs:
+xserver_debian_pkgs_default:
   - build-essential
   - gcc
   - gfortran
@@ -66,3 +66,13 @@ xserver_debian_pkgs:
   - libxslt1-dev
   - python-dev
   - apparmor-utils
+
+xserver_release_specific_debian_pkgs:
+  xenial:
+    - python-dev
+  bionic:
+    - python-dev
+  focal:
+    - python3-dev
+
+xserver_debian_pkgs: "{{ xserver_debian_pkgs_default + xserver_release_specific_debian_pkgs[ansible_distribution_release] }}"

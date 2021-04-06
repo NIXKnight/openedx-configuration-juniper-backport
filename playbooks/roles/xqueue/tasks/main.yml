@@ -1,18 +1,22 @@
 ---
 ######## BEGIN PYTHON3 ########
-- name: install python3
+- name: add deadsnakes repo
+  apt_repository:
+      repo: ppa:deadsnakes/ppa
+      update_cache: yes
+
+- name: install python3.5
   apt:
     name: "{{ item }}"
-  when: xqueue_use_python3
   with_items:
-    - python3-pip
-    - python3-dev
+    - python3.5-dev
+    - python3.5-distutils
   tags:
     - install
     - install:system-requirements
 
-- name: build virtualenv with python3
-  command: "virtualenv --python=python3 {{ xqueue_venv_dir }}"
+- name: build virtualenv with python3.5
+  command: "virtualenv --python=python3.5 {{ xqueue_venv_dir }}"
   args:
     creates: "{{ xqueue_venv_dir }}/bin/pip"
   become_user: "{{ xqueue_user }}"

@@ -115,6 +115,15 @@
     - install:configuration
     - install:app-configuration
 
+- name: build virtualenv with python3.5
+  command: "virtualenv --python=python3.5 {{ edx_service_venv_dir }}"
+  args:
+    creates: "{{ edx_service_venv_dir }}/bin/pip"
+  become_user: "{{ edx_service_user }}"
+  tags:
+    - install
+    - install:system-requirements
+
 - name: Replace deploy host to sandbox dns name
   replace:
     path: "{{ UNENCRYPTED_CFG_DIR }}/{{ edx_service_name }}.yml"

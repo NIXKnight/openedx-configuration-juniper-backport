@@ -43,7 +43,7 @@ discovery_node_version: "{{ DISCOVERY_NODE_VERSION }}"
 
 discovery_debian_pkgs:
   - libxml2-dev
-  - libxslt-dev
+  - libxslt1-dev
   - libjpeg-dev
 
 
