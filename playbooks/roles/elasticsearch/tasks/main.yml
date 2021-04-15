@@ -29,7 +29,7 @@
 #    - elasticsearch
 #
 
-- name: Install Elasticsearch repo key 
+- name: Install Elasticsearch repo key
   apt_key:
     url: "{{ elasticsearch_apt_key_url }}"
     state: present
@@ -38,9 +38,10 @@
     - install:base
 
 - name: Add Elasticsearch Repo
-  apt_repository:
-    repo: "{{ elasticsearch_repo }}"
-    state: present
+  copy:
+    dest: "/etc/apt/sources.list.d/elasticsearch-1.5.list"
+    content: |
+      {{ elasticsearch_repo }}
   tags:
     - install
     - install:base
