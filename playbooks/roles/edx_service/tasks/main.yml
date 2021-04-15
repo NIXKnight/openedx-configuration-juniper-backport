@@ -115,6 +115,18 @@
     - install:configuration
     - install:app-configuration
 
+- name: Add deadsnakes repo
+  apt_repository:
+      repo: ppa:deadsnakes/ppa
+
+- name: Install Python 3.5
+  apt:
+    pkg:
+      - python3.5-dev
+  tags:
+    - install
+    - install:system-requirements
+
 - name: build virtualenv with python3.5
   command: "virtualenv --python=python3.5 {{ edx_service_venv_dir }}"
   args:
