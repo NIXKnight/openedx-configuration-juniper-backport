@@ -161,7 +161,6 @@
   apt:
     pkg:
       - python3.5-dev
-      - python3.5-distutils
   tags:
     - install
     - install:system-requirements
